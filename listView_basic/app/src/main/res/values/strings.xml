@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">listView_basic</string>
+    <string-array name="arrayQuocGia">
+        <item>Việt Nam</item>
+        <item>Lào</item>
+        <item>Nga</item>
+        <item>Cuba</item>
+    </string-array>
+</resources>

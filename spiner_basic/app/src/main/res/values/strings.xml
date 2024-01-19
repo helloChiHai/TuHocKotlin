@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">spiner_basic</string>
+    <string-array name="ngonNgu">
+        <item>Việt Nam</item>
+        <item>Nga</item>
+        <item>Cuba</item>
+        <item>Lào</item>
+    </string-array>
+</resources>
