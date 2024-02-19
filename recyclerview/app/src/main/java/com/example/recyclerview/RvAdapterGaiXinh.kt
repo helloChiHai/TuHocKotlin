@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RvAdapterGaiXinh(var ds: List<GaiXinhModel>) :
+class RvAdapterGaiXinh(var ds: List<GaiXinhModel>, val onGaiXinhClick: IGaiXinh) :
     RecyclerView.Adapter<RvAdapterGaiXinh.GaiXinhHolder>() {
     // class holder
     inner class GaiXinhHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -23,7 +23,13 @@ class RvAdapterGaiXinh(var ds: List<GaiXinhModel>) :
             findViewById<TextView>(R.id.tvName_gaiXinh).text = ds[position].name
             findViewById<TextView>(R.id.tvAge_gaiXinh).text = ds[position].age.toString()
             findViewById<ImageView>(R.id.img_gaiXinh).setImageResource(ds[position].img)
+
+            // lang nghe su kien click item
+            holder.itemView.setOnClickListener {
+                onGaiXinhClick.onClickItemGaiXinh(position)
+            }
         }
+
     }
 
     override fun getItemCount(): Int {

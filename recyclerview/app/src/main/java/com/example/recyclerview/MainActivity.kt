@@ -2,6 +2,7 @@ package com.example.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.databinding.ActivityMainBinding
@@ -21,7 +22,15 @@ class MainActivity : AppCompatActivity() {
         dsGaiXinh.add(GaiXinhModel(R.drawable.img_4, "Gai Xinh 4", 19))
 
         // them ds vua tao vao adapter
-        val adapter = RvAdapterGaiXinh(dsGaiXinh)
+        val adapter = RvAdapterGaiXinh(dsGaiXinh, object : IGaiXinh {
+            override fun onClickItemGaiXinh(position: Int) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Ban da click vao: ${dsGaiXinh[position].name}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
         binding.rcvGaiXinh.adapter = adapter
 
         // hien thi theo kieu linearlayout
