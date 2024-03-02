@@ -10,12 +10,32 @@ import com.example.firebaseflutter.UserModel
 
 class UserAdapter(private val ds: ArrayList<UserModel>) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    // lắng nghe sự kiện click item trên recycleview
+
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: onItemClickListener) {
+        mListener = clickListener
+    }
+
+    // tạo viewholder
+    class ViewHolder(itemView: View, clickListener: onItemClickListener) :
+        RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_item_user, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(itemView, mListener)
     }
 
     override fun getItemCount(): Int {

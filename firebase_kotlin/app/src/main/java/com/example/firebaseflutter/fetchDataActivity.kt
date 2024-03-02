@@ -1,8 +1,10 @@
 package com.example.firebaseflutter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebaseflutter.adapter.UserAdapter
 import com.example.firebaseflutter.databinding.ActivityFetchDataBinding
@@ -53,6 +55,20 @@ class fetchDataActivity : AppCompatActivity() {
                     }
                     val mAdapter = UserAdapter(ds)
                     binding.rvUser.adapter = mAdapter
+
+                    // lắng nghe sự kiện click item trên recyclerview
+                    mAdapter.setOnItemClickListener(object : UserAdapter.onItemClickListener {
+                        override fun onItemClick(position: Int) {
+                            val intent =
+                                Intent(this@fetchDataActivity, DetailUserActivity::class.java)
+                            // put extra
+                            intent.putExtra("idUser", ds[position].id)
+                            intent.putExtra("nameUser", ds[position].name)
+                            intent.putExtra("ageUser", ds[position].age)
+                            intent.putExtra("addressUser", ds[position].address)
+                            startActivity(intent)
+                        }
+                    })
 
                     // thay đổi khi có dữ liệu
                     binding.rvUser.visibility = View.VISIBLE
