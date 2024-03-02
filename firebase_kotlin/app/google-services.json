@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "149581374645",
+    "firebase_url": "https://tuhockotlin-default-rtdb.firebaseio.com",
+    "project_id": "tuhockotlin",
+    "storage_bucket": "tuhockotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149581374645:android:f8eb116206dcffc4bccafc",
+        "android_client_info": {
+          "package_name": "com.example.firebaseflutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHfUbjphSqXl0o0gDHPBT-RAxXzVJiLOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
